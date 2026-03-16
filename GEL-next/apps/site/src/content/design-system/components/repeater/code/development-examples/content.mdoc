@@ -1,0 +1,24 @@
+```tsx
+() => {
+  const [items, setItems] = useState(['Repeater']);
+
+  const handleAdd = useCallback(() => {
+    setItems([...items, 'Repeater']);
+  }, [items, setItems]);
+
+  return (
+    <Repeater onAdd={handleAdd}>
+      {items.map((item, index) => (
+        <RepeaterItem
+          key={index}
+          onRemove={() => {
+            setItems([...items.slice(0, index), ...items.slice(index + 1)]);
+          }}
+        >
+          <h3>{item}</h3>
+        </RepeaterItem>
+      ))}
+    </Repeater>
+  );
+};
+```

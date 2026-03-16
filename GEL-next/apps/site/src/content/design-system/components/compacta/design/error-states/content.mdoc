@@ -1,0 +1,69 @@
+When a user attempts to progress through the form, errors are captured at this point. Any Compacta that has an error will automatically open and highlight the error inline.
+
+```tsx
+() => {
+  const { register, watch, setValue } = useForm<Inputs>({
+    defaultValues: { items: [{ primary: '', accountNumber: '', amount: 0 }] },
+  });
+  const items = watch('items');
+
+  const handleAdd = useCallback(() => {
+    setValue('items', [...items, { primary: '', accountNumber: '', amount: 0 }]);
+  }, [items, setValue]);
+
+  return (
+    <form>
+      <Compacta onAdd={handleAdd}>
+        {items.map((item, index) => (
+          <CompactaItem
+            key={index}
+            title={{ primary: item.primary, secondary: item.accountNumber, tertiary: item.amount }}
+            onRemove={() => {
+              setValue('items', [...items.slice(0, index), ...items.slice(index + 1)]);
+            }}
+          >
+            <div className="flex flex-col gap-4">
+              <Field
+                label="Primary"
+                hintMessage="Select your card insitution"
+                errorMessage="If there is an error it can go here"
+              >
+                <Select onChange={e => {}} width={30} invalid {...register(`items.${index}.primary`)}>
+                  <option>Select</option>
+                  <option>AMP Bank</option>
+                  <option>ANZ - Australia and New Zealand Banking Group</option>
+                  <option>Bank of Queensland</option>
+                  <option>Bendigo Bank</option>
+                  <option>CBA - Commonwealth Bank</option>
+                  <option>Macquarie Bank</option>
+                  <option>NAB - National Australian Bank</option>
+                  <option>Westpac Bank</option>
+                </Select>
+              </Field>
+
+              <Field
+                label="Account number"
+                hintMessage="Refer to a statement from the card’s financial institution"
+                errorMessage="If there is an error it can go here"
+              >
+                <Input onChange={e => {}} width={30} invalid {...register(`items.${index}.accountNumber`)} />
+              </Field>
+
+              <InputGroup
+                onChange={e => {}}
+                width={20}
+                invalid
+                errorMessage="If there is an error it can go here"
+                before="$"
+                label="Amount to transfer"
+              >
+                <Input {...register(`items.${index}.amount`, { valueAsNumber: true })} invalid />
+              </InputGroup>
+            </div>
+          </CompactaItem>
+        ))}
+      </Compacta>
+    </form>
+  );
+};
+```

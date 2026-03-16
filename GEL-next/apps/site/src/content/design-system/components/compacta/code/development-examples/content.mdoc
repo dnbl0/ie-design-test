@@ -1,0 +1,103 @@
+### Default compacta example
+
+```tsx
+() => {
+  const { register, watch, setValue } = useForm<Inputs>({
+    defaultValues: { items: [{ primary: '', accountNumber: '', amount: 0 }] },
+  });
+  const items = watch('items');
+
+  const handleAdd = useCallback(() => {
+    setValue('items', [...items, { primary: '', accountNumber: '', amount: 0 }]);
+  }, [items, setValue]);
+
+  return (
+    <form>
+      <Compacta onAdd={handleAdd}>
+        {items.map((item, index) => (
+          <CompactaItem
+            key={index}
+            title={{ primary: item.primary, secondary: item.accountNumber, tertiary: item.amount }}
+            onRemove={() => {
+              setValue('items', [...items.slice(0, index), ...items.slice(index + 1)]);
+            }}
+          >
+            <div className="flex flex-col gap-4">
+              <Field label="Primary" hintMessage="Select your card insitution">
+                <Select onChange={e => {}} width={30} {...register(`items.${index}.primary`)}>
+                  <option>Select</option>
+                  <option>AMP Bank</option>
+                  <option>ANZ - Australia and New Zealand Banking Group</option>
+                  <option>Bank of Queensland</option>
+                  <option>Bendigo Bank</option>
+                  <option>CBA - Commonwealth Bank</option>
+                  <option>Macquarie Bank</option>
+                  <option>NAB - National Australian Bank</option>
+                  <option>Westpac Bank</option>
+                </Select>
+              </Field>
+              <Field label="Account number" hintMessage="Refer to a statement from the card’s financial institution">
+                <Input onChange={e => {}} width={30} {...register(`items.${index}.accountNumber`)} />
+              </Field>
+              <InputGroup onChange={e => {}} width={20} before="$" label="Amount to transfer">
+                <Input {...register(`items.${index}.amount`, { valueAsNumber: true })} />
+              </InputGroup>
+            </div>
+          </CompactaItem>
+        ))}
+      </Compacta>
+    </form>
+  );
+};
+```
+
+### Using initial values
+
+```tsx
+() => {
+   const { register, watch, setValue } = useForm<Inputs>({
+    defaultValues: {
+      items: [
+        { primary: 'test', secondary: 'test 2', tertiary: 'test 3', fourth: 'test 4', defaultExpanded: true },
+        { primary: 'test', secondary: 'test 2', tertiary: 'test 3', fourth: 'test 4' },
+        { primary: '', secondary: '', tertiary: '', fourth: '' },
+      ],
+    },
+  });
+  const items = watch('items');
+
+  const handleAdd = useCallback(() => {
+    setValue('items', [...items, { primary: '', secondary: '', tertiary: '', fourth: '' }]);
+  }, [items, setValue]);
+
+  return (
+    <form>
+      <Compacta onAdd={handleAdd}>
+        {items.map((item, index) => (
+          <CompactaItem
+            key={index}
+            title={{ primary: item.primary, secondary: item.secondary, tertiary: item.tertiary }}
+            onRemove={() => {
+              setValue('items', [...items.slice(0, index), ...items.slice(index + 1)]);
+            }}
+            defaultExpanded={item.defaultExpanded}
+          >
+            <Field label="Primary" hintMessage="Primary title text">
+              <Input {...register(`items.${index}.primary`)} />
+            </Field>
+            <Field label="Secondary" hintMessage="Secondary title text">
+              <Input {...register(`items.${index}.secondary`)} />
+            </Field>
+            <Field label="Tertiary" hintMessage="Tertiary title text">
+              <Input {...register(`items.${index}.tertiary`)} />
+            </Field>
+            <Field label="Fourth" hintMessage="Fourth field">
+              <Input {...register(`items.${index}.fourth`)} />
+            </Field>
+          </CompactaItem>
+        ))}
+      </Compacta>
+    </form>
+  );
+};
+```

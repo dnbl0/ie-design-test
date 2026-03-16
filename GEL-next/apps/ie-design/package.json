@@ -1,0 +1,16 @@
+{
+  "name": "ie-design",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3005",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "16.1.6",
+    "react": "18.3.28",
+    "react-dom": "18.3.1",
+    "@westpac/ui": "workspace:*"
+  }
+}

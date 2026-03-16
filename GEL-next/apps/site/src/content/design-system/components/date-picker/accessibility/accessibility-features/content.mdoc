@@ -1,0 +1,15 @@
+- **Powered by React Aria** — built on top of [React Aria](https://react-spectrum.adobe.com/react-aria/index.html), providing robust, WAI-ARIA-compliant date picker components with accessible interaction patterns by default.
+- **Built-in Accessibility Compliance** — leverages React Aria’s first-class support for screen readers, keyboard navigation, and focus management without relying on custom CSS overrides for accessibility.
+- **Clear State Indications** — calendar dates are visually styled to clearly reflect their states (selected, focused, disabled, or active), including focus outlines and proper contrast ratios.
+- **Consistent Interactions** — users can toggle the calendar popup consistently using mouse, keyboard, or touch. The popup can be dismissed by selecting a date, toggling the button, or pressing the `Escape` key.
+- **Focus Management** — when the calendar popup opens, focus automatically moves to the calendar panel. On closing, focus returns to the toggle button.
+- **Keyboard Navigation** — full keyboard support including:
+  - Arrow keys to navigate dates within the calendar grid.
+  - `Enter` or `Space` to select a date.
+  - `Escape` to close the popup.
+- **High Contrast Mode Support** — all interactive elements (input field, calendar button, popup panel, and date buttons) remain visible and usable in **Windows High Contrast Mode (WHCM)**, with proper focus outlines and state indications.
+
+## Accessibility in HTML
+
+- **ARIA Attributes** — all relevant ARIA roles and properties (e.g., `role="dialog"`, `aria-label`, `aria-selected`) are handled automatically by React Aria to ensure compliance with WCAG and assistive technologies.
+- **Keyboard Support Reference** — for a detailed explanation of supported keyboard interactions, refer to the [React Aria Date Picker documentation](https://react-spectrum.adobe.com/react-aria/useDatePicker.html).

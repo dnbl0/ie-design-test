@@ -1,0 +1,42 @@
+import { clsx } from 'clsx';
+import React from 'react';
+
+import { Symbol } from '../../symbol.component.js';
+import { type SymbolProps } from '../../symbol.types.js';
+
+export function WBCLogo({
+  'aria-label': ariaLabel = 'Westpac',
+  copyrightYear = '2025',
+  viewBoxWidth = 69,
+  viewBoxHeight = 28,
+  className,
+  ...props
+}: SymbolProps) {
+  return (
+    <Symbol
+      className={clsx('h-[28px] w-[69px]', className)}
+      aria-label={ariaLabel}
+      copyrightYear={copyrightYear}
+      viewBoxWidth={viewBoxWidth}
+      viewBoxHeight={viewBoxHeight}
+      {...props}
+    >
+      <g clipPath="url(#clip0_139_1241)">
+        <path
+          d="M24.0303 25.0896L17.3333 4.1147C16.447 0.903226 14.7727 0 12.4091 0H0C0.984848 0.401434 1.57576 2.91039 1.57576 2.91039L7.58333 23.9857C8.27273 26.595 10.4394 28 12.9015 28H26C25.0152 27.8996 24.0303 25.0896 24.0303 25.0896Z"
+          fill="#DA1710"
+        />
+        <path
+          d="M44.9697 25.0896L51.6667 4.1147C52.553 0.903226 54.2273 0 56.5909 0H69C68.0152 0.401434 67.4242 2.91039 67.4242 2.91039L61.4167 23.9857C60.7273 26.595 58.5606 28 56.0985 28H43C43.9848 27.8996 44.9697 25.0896 44.9697 25.0896Z"
+          fill="#DA1710"
+        />
+        <path d="M42 0H27V28H42V0Z" fill="#DA1710" />
+      </g>
+      <defs>
+        <clipPath id="clip0_139_1241">
+          <rect width="69" height="28" fill="white" />
+        </clipPath>
+      </defs>
+    </Symbol>
+  );
+}

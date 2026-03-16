@@ -1,0 +1,19 @@
+```jsx
+<Fragment>
+  <ComponentTitle>Selecting a date range</ComponentTitle>
+  <Field label="Select a date range" errorMessage={['Select from date must be valid', 'Select to date must be valid']}>
+    <div className="flex gap-3">
+      <div className="pb-2">
+        <Field label="Select from" labelSize="small">
+          <DatePicker isInvalid />
+        </Field>
+      </div>
+      <div className="pb-2">
+        <Field label="Select to" labelSize="small">
+          <DatePicker isInvalid />
+        </Field>
+      </div>
+    </div>
+  </Field>
+</Fragment>
+```

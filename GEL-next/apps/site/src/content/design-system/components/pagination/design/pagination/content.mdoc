@@ -1,0 +1,17 @@
+Use this responsive pagination component for navigation through multiple pages or content views.
+
+```tsx
+() => {
+  const [page, setPage] = useState(1);
+
+  return (
+    <Pagination
+      current={page}
+      onChange={changedPage => {
+        setPage(changedPage);
+      }}
+      totalPages={3}
+    />
+  );
+};
+```

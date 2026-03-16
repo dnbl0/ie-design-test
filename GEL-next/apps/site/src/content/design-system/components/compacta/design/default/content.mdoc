@@ -1,0 +1,42 @@
+Below is an example of how a Compacta may be used with fields and inputs. Any form related elements can exist inside a Compacta.
+
+```tsx
+() => {
+  const { register, watch, setValue } = useForm<Inputs>({
+    defaultValues: { items: [{ primary: '', secondary: '', tertiary: '' }] },
+  });
+  const items = watch('items');
+
+  const handleAdd = useCallback(() => {
+    setValue('items', [...items, { primary: '', secondary: '', tertiary: '' }]);
+  }, [items, setValue]);
+
+  return (
+    <form>
+      <Compacta onAdd={handleAdd}>
+        {items.map((item, index) => (
+          <CompactaItem
+            key={index}
+            title={{ primary: item.primary, secondary: item.secondary, tertiary: item.tertiary }}
+            onRemove={() => {
+              setValue('items', [...items.slice(0, index), ...items.slice(index + 1)]);
+            }}
+          >
+            <div className="flex flex-col gap-4">
+              <Field label="Primary" hintMessage="Primary title text">
+                <Input {...register(`items.${index}.primary`)} />
+              </Field>
+              <Field label="Secondary" hintMessage="Secondary title text">
+                <Input {...register(`items.${index}.secondary`)} />
+              </Field>
+              <Field label="Tertiary" hintMessage="Tertiary title text">
+                <Input {...register(`items.${index}.tertiary`)} />
+              </Field>
+            </div>
+          </CompactaItem>
+        ))}
+      </Compacta>
+    </form>
+  );
+};
+```

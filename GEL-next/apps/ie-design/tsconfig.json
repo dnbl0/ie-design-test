@@ -1,0 +1,21 @@
+{
+  "extends": "../../packages/ts-config/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@westpac/ui": ["../../packages/ui/dist/index.js"],
+      "@westpac/ui/*": ["../../packages/ui/dist/*"]
+    },
+    "noEmit": true,
+    "module": "esnext",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

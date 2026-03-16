@@ -1,0 +1,7 @@
+@import '@westpac/ui/dist/css/westpac-ui.css';
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #222;
+}

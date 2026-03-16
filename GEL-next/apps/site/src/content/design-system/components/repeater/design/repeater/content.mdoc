@@ -1,0 +1,77 @@
+### Default
+
+Use the default Repeater in situations where the user may need to repeat a single component or field, e.g. for multiple phone number entries.
+
+```tsx
+() => {
+  const { register, watch, setValue } = useForm<Inputs>({
+    defaultValues: { items: [{ label: '' }] },
+  });
+  const items = watch('items');
+
+  const handleAdd = useCallback(() => {
+    setValue('items', [...items, { label: '' }]);
+  }, [items, setValue]);
+
+  return (
+    <form>
+      <Repeater onAdd={handleAdd}>
+        {items.map((item, index) => (
+          <RepeaterItem
+            key={index}
+            title={{ primary: item.primary, secondary: item.secondary, tertiary: item.tertiary }}
+            onRemove={() => {
+              setValue('items', [...items.slice(0, index), ...items.slice(index + 1)]);
+            }}
+          >
+            <Field label="Label">
+              <Input {...register(`items.${index}.label`)} />
+            </Field>
+          </RepeaterItem>
+        ))}
+      </Repeater>
+    </form>
+  );
+};
+```
+
+### With separator
+
+Use the Repeater with separator when the user may need to repeat a set of components or fields, e.g. for multiple sets of credit card or account details.
+
+```tsx
+() => {
+  const { register, watch, setValue } = useForm<Inputs>({
+    defaultValues: { items: [{ label: '', label2: '' }] },
+  });
+  const items = watch('items');
+
+  const handleAdd = useCallback(() => {
+    setValue('items', [...items, { label: '', label2: '' }]);
+  }, [items, setValue]);
+
+  return (
+    <form>
+      <Repeater separator onAdd={handleAdd}>
+        {items.map((item, index) => (
+          <RepeaterItem
+            key={index}
+            onRemove={() => {
+              setValue('items', [...items.slice(0, index), ...items.slice(index + 1)]);
+            }}
+          >
+            <div className="flex flex-col gap-4">
+              <Field label="Label 1">
+                <Input {...register(`items.${index}.label`)} />
+              </Field>
+              <Field label="Label 2">
+                <Input {...register(`items.${index}.label2`)} />
+              </Field>
+            </div>
+          </RepeaterItem>
+        ))}
+      </Repeater>
+    </form>
+  );
+};
+```

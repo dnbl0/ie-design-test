@@ -1,0 +1,68 @@
+```tsx
+() => {
+  const { register, watch, setValue } = useForm({
+    defaultValues: { items: [{ mobileNumber: '' }] },
+  });
+  const items = watch('items');
+
+  const handleAdd = useCallback(() => {
+    setValue('items', [...items, { mobileNumber: '' }]);
+  }, [items, setValue]);
+
+  return (
+    <form>
+      <Repeater onAdd={handleAdd}>
+        {items.map((item, index) => (
+          <RepeaterItem
+            key={index}
+            onRemove={() => {
+              setValue('items', [...items.slice(0, index), ...items.slice(index + 1)]);
+            }}
+          >
+            <Field label="Mobile number">
+              <Input {...register(`items.${index}.mobileNumber`)} width={10} />
+            </Field>
+          </RepeaterItem>
+        ))}
+      </Repeater>
+    </form>
+  );
+};
+```
+
+```tsx
+() => {
+  const { register, watch, setValue } = useForm({
+    defaultValues: { items: [{ bsb: '', accountNumber: '' }] },
+  });
+  const items = watch('items');
+
+  const handleAdd = useCallback(() => {
+    setValue('items', [...items, { bsb: '', accountNumber: '' }]);
+  }, [items, setValue]);
+
+  return (
+    <form>
+      <Repeater separator onAdd={handleAdd}>
+        {items.map((item, index) => (
+          <RepeaterItem
+            key={index}
+            onRemove={() => {
+              setValue('items', [...items.slice(0, index), ...items.slice(index + 1)]);
+            }}
+          >
+            <div className="flex flex-col gap-4">
+              <Field label="BSB">
+                <Input {...register(`items.${index}.bsb`)} width={10} />
+              </Field>
+              <Field label="Account number" hintMessage="Account number should have 10 digits">
+                <Input {...register(`items.${index}.accountNumber`)} width={18} />
+              </Field>
+            </div>
+          </RepeaterItem>
+        ))}
+      </Repeater>
+    </form>
+  );
+};
+```

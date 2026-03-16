@@ -1,0 +1,66 @@
+### ButtonGroup sizes
+
+```jsx
+<ButtonGroup>
+  <ButtonGroupButton id="Left">Left</ButtonGroupButton>
+  <ButtonGroupButton id="Middle">Middle</ButtonGroupButton>
+  <ButtonGroupButton id="Right">Right</ButtonGroupButton>
+</ButtonGroup>
+```
+
+### ButtonGroup looks
+
+```jsx
+<div className="grid gap-3">
+  <Field label={<p className="typography-body-10 text-text-muted italic mb-[0.875rem]">Index (integer)</p>}>
+    <ButtonGroup selectedKeys={0}>
+      <ButtonGroupButton id={0}>Left</ButtonGroupButton>
+      <ButtonGroupButton id={1}>Middle</ButtonGroupButton>
+      <ButtonGroupButton id={2}>Right</ButtonGroupButton>
+    </ButtonGroup>
+  </Field>
+
+  <Field label={<p className="typography-body-10 text-text-muted italic mb-[0.875rem]">Key (string)</p>}>
+    <ButtonGroup selectedKeys="left">
+      <ButtonGroupButton id="left">Left</ButtonGroupButton>
+      <ButtonGroupButton id="middle">Middle</ButtonGroupButton>
+      <ButtonGroupButton id="right">Right</ButtonGroupButton>
+    </ButtonGroup>
+  </Field>
+</div>
+```
+
+### With onChange
+
+```jsx
+() => {
+  const [controlled, setControlled] = useState('');
+
+  return (
+    <div className="grid gap-2">
+      <div className="flex gap-1">
+        <Button type="button" onClick={() => setControlled('yes')} size="small">
+          Set to "yes"
+        </Button>
+        <Button type="button" onClick={() => setControlled('maybe')} size="small">
+          Set to "maybe"
+        </Button>
+        <Button type="button" onClick={() => setControlled('no')} size="small">
+          Set to "no"
+        </Button>
+        <Button type="button" onClick={() => setControlled('')} size="small">
+          reset
+        </Button>
+      </div>
+      <ButtonGroup
+        look="hero"
+        selectedKeys={controlled}
+      >
+        <ButtonGroupButton id="yes">Yes</ButtonGroupButton>
+        <ButtonGroupButton id="maybe">Maybe</ButtonGroupButton>
+        <ButtonGroupButton id="no">No</ButtonGroupButton>
+      </ButtonGroup>
+    </div>
+  );
+};
+```

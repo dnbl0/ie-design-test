@@ -1,0 +1,34 @@
+There are four button group sizes, make sure when laying out forms that your button group size and field sizes are aligned.
+
+```tsx
+<div className="grid gap-6">
+  <div className="flex flex-col gap-1">
+    <p className="typography-body-11 text-text-body">This is a small button group 30px</p>
+    <ButtonGroup size="small">
+      <ButtonGroupButton id="left">Left</ButtonGroupButton>
+      <ButtonGroupButton id="right">Right</ButtonGroupButton>
+    </ButtonGroup>
+  </div>
+  <div className="flex flex-col gap-1">
+    <p className="typography-body-11 text-text-body">This is a medium button group 36px</p>
+    <ButtonGroup size="medium">
+      <ButtonGroupButton id="left">Left</ButtonGroupButton>
+      <ButtonGroupButton id="right">Right</ButtonGroupButton>
+    </ButtonGroup>
+  </div>
+  <div className="flex flex-col gap-1">
+    <p className="typography-body-11 text-text-body">This is a large button group 42px</p>
+    <ButtonGroup size="large">
+      <ButtonGroupButton id="left">Left</ButtonGroupButton>
+      <ButtonGroupButton id="right">Right</ButtonGroupButton>
+    </ButtonGroup>
+  </div>
+  <div className="flex flex-col gap-1">
+    <p className="typography-body-11 text-text-body">This is an xlarge button group 48px</p>
+    <ButtonGroup size="xlarge">
+      <ButtonGroupButton id="left">Left</ButtonGroupButton>
+      <ButtonGroupButton id="right">Right</ButtonGroupButton>
+    </ButtonGroup>
+  </div>
+</div>
+```

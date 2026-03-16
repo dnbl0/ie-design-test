@@ -1,0 +1,160 @@
+### Default
+
+```jsx
+<DatePicker />
+```
+
+### Sizes
+
+```jsx
+() => {
+  const sizes = [
+    { label: 'Small', size: 'small' },
+    { label: 'Medium (default)', size: 'medium' },
+    { label: 'Large', size: 'large' },
+    { label: 'XLarge', size: 'xlarge' },
+  ];
+  return sizes.map(({ label, size }) => (
+    <div className="py-4 border-t border-t-border-muted-soft first:border-t-0" key={size}>
+      <ComponentTitle>{label}</ComponentTitle>
+      <DatePicker size={size} />
+    </div>
+  ));
+};
+```
+
+### Controlled
+
+```jsx
+() => {
+  const [value, setValue] = useState(today());
+  console.log('value', value);
+  return (
+    <DatePicker
+      onChange={value => {
+        setValue(value);
+      }}
+      onOpen={() => {
+        console.log('onOpen');
+      }}
+      onClose={() => {
+        console.log('onClose');
+      }}
+      onBlur={() => {
+        console.log('onBlur');
+      }}
+      onFocus={() => {
+        console.log('onFocus');
+      }}
+      value={value}
+    />
+  );
+};
+```
+
+### Different date format
+
+Different date format (dd/MM/yyyy)
+
+```jsx
+<DatePicker />
+```
+
+### Disabled weekends
+
+```jsx
+<DatePicker disableWeekends />
+```
+
+### Disabled days of the week
+
+Disable days of the week (Mon, Wed, Fri in example)
+
+```jsx
+<DatePicker disableDaysOfWeek={[0, 2, 4]} />
+```
+
+### Disabled specific dates
+
+Disable specific dates
+
+```jsx
+() => {
+  const now = today(getLocalTimeZone());
+  const disabledRanges = [
+    [now, now.add({ days: 5 })],
+    [now.add({ days: 14 }), now.add({ days: 16 })],
+    [now.add({ days: 23 }), now.add({ days: 24 })],
+  ];
+
+  const isDateUnavailable = (date: DateValue) =>
+    disabledRanges.some(interval => date.compare(interval[0]) >= 0 && date.compare(interval[1]) <= 0);
+
+  return (
+    <DatePicker
+      isDateUnavailable={isDateUnavailable}
+    />
+  )
+}
+```
+
+### Invalid state
+
+```jsx
+<DatePicker isInvalid />
+```
+
+### Form field
+
+```jsx
+() => {
+  const [value, setValue] = useState(new CalendarDate(2023, 8, 1));
+  return (
+    <Field
+      label="Are you an existing customer?"
+      hintMessage="Hint: choose from one of the following options"
+      errorMessage="This is an inline error message"
+    >
+      <DatePicker
+        onChange={value => {
+          console.log(value);
+          setValue(value);
+        }}
+        onOpen={() => {
+          console.log('onOpen');
+        }}
+        onClose={() => {
+          console.log('onClose');
+        }}
+        onBlur={() => {
+          console.log('onBlur');
+        }}
+        onFocus={() => {
+          console.log('onFocus');
+        }}
+        value={value}
+      />
+    </Field>
+  );
+};
+```
+
+### Range
+
+```jsx
+<Fragment>
+  <ComponentTitle>Selecting a date range</ComponentTitle>
+  <div className="flex gap-3">
+    <div className="pb-2">
+      <Field label="Select from">
+        <DatePicker />
+      </Field>
+    </div>
+    <div className="pb-2">
+      <Field label="Select to">
+        <DatePicker />
+      </Field>
+    </div>
+  </div>
+</Fragment>
+```
