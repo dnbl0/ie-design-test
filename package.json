@@ -1,0 +1,10 @@
+{
+  "name": "ie-design-test-root",
+  "private": true,
+  "devDependencies": {
+    "next": "16.1.6"
+  },
+  "dependencies": {
+    "@westpac/ui": "^1.1.0"
+  }
+}

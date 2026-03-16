@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Next.js build output
+.next/
+dist/
+out/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
