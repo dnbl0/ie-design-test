@@ -1,0 +1,32 @@
+{
+  "name": "ie-brand-guidelines",
+  "version": "1.0.0",
+  "description": "IE Design System – Multi-Brand Brand Guidelines Site",
+  "private": true,
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^5.14.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "gatsby-plugin-react-helmet": "^6.0.0",
+    "gatsby-plugin-image": "^3.0.0",
+    "gatsby-plugin-sharp": "^5.0.0",
+    "gatsby-transformer-sharp": "^5.0.0",
+    "gatsby-plugin-manifest": "^5.0.0",
+    "gatsby-source-filesystem": "^5.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
+}
