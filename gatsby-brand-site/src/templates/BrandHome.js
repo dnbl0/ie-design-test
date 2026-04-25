@@ -3,6 +3,8 @@ import { Link } from 'gatsby';
 import { BrandLayout } from '../components/layout/Layout';
 import { useBrand } from '../context/BrandContext';
 import { getBrand } from '../data/brands';
+import AnimateIn from '../components/ui/AnimateIn';
+import AnimatedStat from '../components/ui/AnimatedStat';
 
 const cardStyle = {
   background: 'var(--color-surface)',
@@ -107,7 +109,7 @@ function HeroSection({ brand }) {
   );
 }
 
-function StatsBar({ brand }) {
+function StatsBar() {
   const stats = [
     { label: 'Components', value: '50+' },
     { label: 'Design Tokens', value: '200+' },
@@ -119,18 +121,15 @@ function StatsBar({ brand }) {
       display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
       gap: 'var(--space-4)', marginBottom: 'var(--space-10)',
     }}>
-      {stats.map((s) => (
-        <div key={s.label} style={{
-          background: 'var(--color-surface)', border: '1px solid var(--color-border)',
-          borderRadius: 'var(--radius-lg)', padding: 'var(--space-5)', textAlign: 'center',
-        }}>
-          <div style={{ fontSize: 'var(--text-3xl)', fontWeight: 'var(--weight-extrabold)', color: 'var(--color-primary)', fontFamily: 'var(--font-display)', lineHeight: 1 }}>
-            {s.value}
+      {stats.map((s, i) => (
+        <AnimateIn key={s.label} variant="scaleIn" delay={i}>
+          <div style={{
+            background: 'var(--color-surface)', border: '1px solid var(--color-border)',
+            borderRadius: 'var(--radius-lg)', padding: 'var(--space-5)',
+          }}>
+            <AnimatedStat value={s.value} label={s.label} />
           </div>
-          <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: 'var(--space-1)', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 'var(--weight-medium)' }}>
-            {s.label}
-          </div>
-        </div>
+        </AnimateIn>
       ))}
     </div>
   );
@@ -169,7 +168,11 @@ export default function BrandHome({ pageContext }) {
           Start with foundations and build up to complex patterns.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 'var(--space-4)' }}>
-          {features.map((f) => <FeatureCard key={f.title} {...f} />)}
+          {features.map((f, i) => (
+            <AnimateIn key={f.title} variant="fadeUp" delay={i}>
+              <FeatureCard {...f} />
+            </AnimateIn>
+          ))}
         </div>
       </section>
 

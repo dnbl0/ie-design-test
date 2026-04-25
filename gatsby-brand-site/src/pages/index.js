@@ -3,6 +3,8 @@ import { Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import AnimateIn from '../components/ui/AnimateIn';
+import AnimatedStat from '../components/ui/AnimatedStat';
 
 function IeLogoHero() {
   return (
@@ -49,7 +51,7 @@ export default function IndexPage() {
             backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
             backgroundSize: '24px 24px',
           }} aria-hidden="true" />
-          <div className="container" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <div className="container hero-animate" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--space-8)' }}>
               <IeLogoHero />
             </div>
@@ -100,10 +102,9 @@ export default function IndexPage() {
                 { value: 'WCAG AA', label: 'Accessibility' },
                 { value: '100%', label: 'Tested' },
               ].map((s) => (
-                <div key={s.label}>
-                  <div style={{ fontSize: 'var(--text-4xl)', fontWeight: 800, color: 'var(--color-primary)', fontFamily: 'var(--font-display)', lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', marginTop: 'var(--space-2)', fontWeight: 500 }}>{s.label}</div>
-                </div>
+                <AnimateIn key={s.label} variant="scaleIn" delay={s.label === 'Components' ? 0 : s.label === 'Design Tokens' ? 1 : s.label === 'Accessibility' ? 2 : 3}>
+                  <AnimatedStat value={s.value} label={s.label} />
+                </AnimateIn>
               ))}
             </div>
           </div>
@@ -128,23 +129,26 @@ export default function IndexPage() {
                 { icon: '📐', title: 'Patterns', desc: 'Reusable compositions and patterns for common UX flows.', to: '/ie/patterns/forms/' },
                 { icon: '✍️', title: 'Content', desc: 'Tone of voice, writing guidelines, and inclusive language principles.', to: '/ie/content/tone-of-voice/' },
                 { icon: '♿', title: 'Accessibility', desc: 'WCAG compliance guides, keyboard navigation, and screen reader support.', to: '/ie/accessibility/accessible-by-design/' },
-              ].map((item) => (
-                <Link key={item.title} to={item.to} style={{
-                  background: 'var(--color-surface)',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: 'var(--radius-xl)',
-                  padding: 'var(--space-6)',
-                  textDecoration: 'none',
-                  display: 'block',
-                  transition: 'all var(--duration-fast)',
-                }}
-                  onMouseEnter={(e) => { e.currentTarget.style.boxShadow = 'var(--shadow-md)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'none'; }}
-                >
-                  <span style={{ fontSize: '1.5rem', display: 'block', marginBottom: 'var(--space-3)' }}>{item.icon}</span>
-                  <h3 style={{ fontSize: 'var(--text-lg)', fontWeight: 700, marginBottom: 'var(--space-2)', color: 'var(--color-text-primary)' }}>{item.title}</h3>
-                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', margin: 0, lineHeight: 'var(--leading-relaxed)' }}>{item.desc}</p>
-                </Link>
+              ].map((item, i) => (
+                <AnimateIn key={item.title} variant="fadeUp" delay={i}>
+                  <Link to={item.to} style={{
+                    background: 'var(--color-surface)',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: 'var(--radius-xl)',
+                    padding: 'var(--space-6)',
+                    textDecoration: 'none',
+                    display: 'block',
+                    transition: 'all var(--duration-fast)',
+                    height: '100%',
+                  }}
+                    onMouseEnter={(e) => { e.currentTarget.style.boxShadow = 'var(--shadow-md)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'none'; }}
+                  >
+                    <span style={{ fontSize: '1.5rem', display: 'block', marginBottom: 'var(--space-3)' }}>{item.icon}</span>
+                    <h3 style={{ fontSize: 'var(--text-lg)', fontWeight: 700, marginBottom: 'var(--space-2)', color: 'var(--color-text-primary)' }}>{item.title}</h3>
+                    <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', margin: 0, lineHeight: 'var(--leading-relaxed)' }}>{item.desc}</p>
+                  </Link>
+                </AnimateIn>
               ))}
             </div>
           </div>
@@ -162,12 +166,14 @@ export default function IndexPage() {
                 { icon: '♿', title: 'Accessible by default', desc: 'Every component meets WCAG 2.1 AA out of the box. No extra accessibility work required.' },
                 { icon: '🎨', title: 'Consistent brand', desc: "One design language, built for i.e., Cohesive experiences across every product." },
                 { icon: '📐', title: 'Design–dev parity', desc: 'Figma tokens sync directly to code. What you design is exactly what ships.' },
-              ].map((v) => (
-                <div key={v.title} style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-6)' }}>
-                  <div style={{ fontSize: '1.75rem', marginBottom: 'var(--space-3)' }}>{v.icon}</div>
-                  <h3 style={{ fontSize: 'var(--text-lg)', fontWeight: 700, marginBottom: 'var(--space-2)', color: 'var(--color-text-primary)' }}>{v.title}</h3>
-                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', margin: 0, lineHeight: 'var(--leading-relaxed)' }}>{v.desc}</p>
-                </div>
+              ].map((v, i) => (
+                <AnimateIn key={v.title} variant="fadeUp" delay={i}>
+                  <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-6)', height: '100%' }}>
+                    <div style={{ fontSize: '1.75rem', marginBottom: 'var(--space-3)' }}>{v.icon}</div>
+                    <h3 style={{ fontSize: 'var(--text-lg)', fontWeight: 700, marginBottom: 'var(--space-2)', color: 'var(--color-text-primary)' }}>{v.title}</h3>
+                    <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', margin: 0, lineHeight: 'var(--leading-relaxed)' }}>{v.desc}</p>
+                  </div>
+                </AnimateIn>
               ))}
             </div>
           </div>

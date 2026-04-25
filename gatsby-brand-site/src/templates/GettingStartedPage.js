@@ -2,10 +2,19 @@ import React, { useEffect } from 'react';
 import { BrandLayout } from '../components/layout/Layout';
 import Breadcrumbs from '../components/layout/Breadcrumbs';
 import Tabs from '../components/ui/Tabs';
+import AnimateIn from '../components/ui/AnimateIn';
+import CodeBlock from '../components/ui/CodeBlock';
+import TokenHierarchyDiagram from '../components/ui/TokenHierarchyDiagram';
+import AdoptionLevelTrack from '../components/ui/AdoptionLevelTrack';
 import { useBrand } from '../context/BrandContext';
 import { getBrand } from '../data/brands';
 
-/* ---- Design tab content per page ---- */
+const TOKEN_FORMATS = [
+  { icon: '#', label: 'CSS', sublabel: 'Custom properties', color: '#2563EB', bg: '#2563EB12' },
+  { icon: 'JS', label: 'JavaScript', sublabel: 'Importable constants', color: '#D97706', bg: '#D97706`12' },
+  { icon: '{}', label: 'JSON', sublabel: 'W3C token format', color: '#7C3AED', bg: '#7C3AED12' },
+  { icon: '▲', label: 'Figma', sublabel: 'Variables & styles', color: '#059669', bg: '#05966912' },
+];
 
 function OverviewDesign({ brand }) {
   const brandName = getBrand(brand).name;
@@ -17,27 +26,44 @@ function OverviewDesign({ brand }) {
         collection of reusable components, design tokens, patterns, and guidelines that enables
         teams to build consistent, accessible, and on-brand digital experiences.
       </p>
+
       <h3>Principles</h3>
-      <ul>
-        <li><strong>Consistent</strong> — Every touchpoint reflects a single, cohesive visual language.</li>
-        <li><strong>Accessible</strong> — All components meet WCAG 2.1 AA standards as a baseline.</li>
-        <li><strong>Efficient</strong> — Pre-built, tested components let teams ship faster.</li>
-        <li><strong>Flexible</strong> — Tokens and variants allow brand-appropriate customisation within guardrails.</li>
-      </ul>
-      <h3>What&apos;s included</h3>
-      <ul>
-        <li>Design tokens (colour, typography, spacing, motion)</li>
-        <li>50+ React components with full accessibility support</li>
-        <li>Pattern library and composition guidelines</li>
-        <li>Figma UI Kit with auto-layout and component variants</li>
-        <li>Storybook component explorer with live code examples</li>
-        <li>Content guidelines and tone of voice</li>
-      </ul>
-      <div className="callout">
-        <strong>New to design systems?</strong> A design system is not just a component
-        library — it is a shared set of decisions that span design, development, and content.
-        Start with Foundations to understand the building blocks.
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 'var(--space-3)', margin: 'var(--space-4) 0' }}>
+        {[
+          { title: 'Consistent', desc: 'Every touchpoint reflects a single, cohesive visual language.', icon: '🔗' },
+          { title: 'Accessible', desc: 'All components meet WCAG 2.1 AA standards as a baseline.', icon: '♿' },
+          { title: 'Efficient', desc: 'Pre-built, tested components let teams ship faster.', icon: '⚡' },
+          { title: 'Flexible', desc: 'Tokens and variants allow brand-appropriate customisation within guardrails.', icon: '🎨' },
+        ].map((p, i) => (
+          <AnimateIn key={p.title} variant="fadeUp" delay={i}>
+            <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-4)', height: '100%' }}>
+              <div style={{ fontSize: '1.25rem', marginBottom: 'var(--space-2)' }}>{p.icon}</div>
+              <div style={{ fontWeight: 'var(--weight-semibold)', fontSize: 'var(--text-sm)', color: 'var(--color-text-primary)', marginBottom: 'var(--space-1)' }}>{p.title}</div>
+              <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', margin: 0, lineHeight: 'var(--leading-relaxed)' }}>{p.desc}</p>
+            </div>
+          </AnimateIn>
+        ))}
       </div>
+
+      <h3>What&apos;s included</h3>
+      <AnimateIn variant="fadeIn">
+        <ul>
+          <li>Design tokens (colour, typography, spacing, motion)</li>
+          <li>50+ React components with full accessibility support</li>
+          <li>Pattern library and composition guidelines</li>
+          <li>Figma UI Kit with auto-layout and component variants</li>
+          <li>Storybook component explorer with live code examples</li>
+          <li>Content guidelines and tone of voice</li>
+        </ul>
+      </AnimateIn>
+
+      <AnimateIn variant="fadeIn">
+        <div className="callout">
+          <strong>New to design systems?</strong> A design system is not just a component
+          library — it is a shared set of decisions that span design, development, and content.
+          Start with Foundations to understand the building blocks.
+        </div>
+      </AnimateIn>
     </div>
   );
 }
@@ -47,12 +73,12 @@ function OverviewCode({ brand }) {
     <div className="prose">
       <h2>Installation</h2>
       <p>The {getBrand(brand).name} component library is available as an npm package.</p>
-      <pre><code>npm install @ie-design/{brand}-ui</code></pre>
+      <CodeBlock language="bash" filename="terminal" code={`npm install @ie-design/${brand}-ui`} />
       <h3>Setup</h3>
       <p>Import the base CSS in your app entry point:</p>
-      <pre><code>import &apos;@ie-design/{brand}-ui/styles/base.css&apos;;</code></pre>
+      <CodeBlock language="javascript" filename="main.js" code={`import '@ie-design/${brand}-ui/styles/base.css';`} />
       <h3>Usage</h3>
-      <pre><code>import {'{ Button }'} from &apos;@ie-design/{brand}-ui&apos;;</code></pre>
+      <CodeBlock language="jsx" filename="App.jsx" code={`import { Button } from '@ie-design/${brand}-ui';\n\nexport default function App() {\n  return <Button variant="primary">Get started</Button>;\n}`} />
       <h3>TypeScript</h3>
       <p>The library ships with full TypeScript definitions. No additional <code>@types</code> package is required.</p>
     </div>
@@ -65,21 +91,28 @@ function DesignTabContent({ brand }) {
     <div className="prose">
       <h2>Designing with {brandName}</h2>
       <p>Our Figma UI Kit provides all components, tokens, and patterns you need.</p>
+
       <h3>Getting the Figma UI Kit</h3>
-      <ol>
-        <li>Visit the Figma Community page</li>
-        <li>Duplicate the file to your Figma workspace</li>
-        <li>Link it as a library in your project files</li>
-      </ol>
+      <AnimateIn variant="fadeIn">
+        <ol>
+          <li>Visit the Figma Community page</li>
+          <li>Duplicate the file to your Figma workspace</li>
+          <li>Link it as a library in your project files</li>
+        </ol>
+      </AnimateIn>
+
       <h3>Figma Variables</h3>
       <p>All design tokens are published as Figma Variables, enabling true design-to-code parity.</p>
+
       <h3>Design workflow</h3>
-      <ul>
-        <li>Use components from the library rather than building from scratch</li>
-        <li>Apply tokens rather than raw values for consistency</li>
-        <li>Review the component usage guidelines before designing a new pattern</li>
-        <li>Submit new patterns through the contribution process</li>
-      </ul>
+      <AnimateIn variant="fadeIn">
+        <ul>
+          <li>Use components from the library rather than building from scratch</li>
+          <li>Apply tokens rather than raw values for consistency</li>
+          <li>Review the component usage guidelines before designing a new pattern</li>
+          <li>Submit new patterns through the contribution process</li>
+        </ul>
+      </AnimateIn>
     </div>
   );
 }
@@ -89,15 +122,17 @@ function CodeSetupContent({ brand }) {
     <div className="prose">
       <h2>Developer Setup</h2>
       <h3>Requirements</h3>
-      <ul>
-        <li>Node.js 18+</li>
-        <li>React 18+</li>
-        <li>TypeScript 5+ (recommended)</li>
-      </ul>
+      <AnimateIn variant="fadeIn">
+        <ul>
+          <li>Node.js 18+</li>
+          <li>React 18+</li>
+          <li>TypeScript 5+ (recommended)</li>
+        </ul>
+      </AnimateIn>
       <h3>Package installation</h3>
-      <pre><code>npm install @ie-design/{brand}-ui</code></pre>
+      <CodeBlock language="bash" filename="terminal" code={`npm install @ie-design/${brand}-ui`} />
       <h3>Next.js integration</h3>
-      <pre><code>transpilePackages: [&apos;@ie-design/{brand}-ui&apos;]</code></pre>
+      <CodeBlock language="javascript" filename="next.config.js" code={`/** @type {import('next').NextConfig} */\nmodule.exports = {\n  transpilePackages: ['@ie-design/${brand}-ui'],\n};`} />
     </div>
   );
 }
@@ -110,51 +145,39 @@ function TokensContent() {
         Design tokens are the atomic values of the design system — colours, spacing, typography,
         motion. They create a single source of truth shared between design tools and code.
       </p>
+
+      <h3>Token hierarchy</h3>
+      <TokenHierarchyDiagram />
+
+      <AnimateIn variant="fadeIn">
+        <div className="callout">
+          Always use semantic tokens in your code — never reference primitive tokens directly.
+          This keeps your code resilient to future token restructuring.
+        </div>
+      </AnimateIn>
+
       <h3>Token formats</h3>
-      <ul>
-        <li><strong>CSS custom properties</strong> — <code>--color-primary: #003087</code></li>
-        <li><strong>JavaScript/TypeScript</strong> — importable constants</li>
-        <li><strong>JSON (W3C format)</strong> — for tooling integration</li>
-        <li><strong>Figma Variables</strong> — for design tools</li>
-      </ul>
-      <h3>Token tiers</h3>
-      <ul>
-        <li><strong>Primitive tokens</strong> — Raw values (e.g., <code>--blue-600: #0070CC</code>)</li>
-        <li><strong>Semantic tokens</strong> — Purpose-based (e.g., <code>--color-primary</code>)</li>
-        <li><strong>Component tokens</strong> — Component-specific overrides</li>
-      </ul>
-      <div className="callout">
-        Always use semantic tokens in your code — never reference primitive tokens directly.
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 'var(--space-3)', margin: 'var(--space-4) 0' }}>
+        {TOKEN_FORMATS.map((f, i) => (
+          <AnimateIn key={f.label} variant="scaleIn" delay={i}>
+            <div style={{ background: f.bg, border: `1.5px solid ${f.color}33`, borderRadius: 'var(--radius-xl)', padding: 'var(--space-4)', textAlign: 'center' }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-lg)', fontWeight: 'var(--weight-bold)', color: f.color, marginBottom: 'var(--space-2)' }}>{f.icon}</div>
+              <div style={{ fontWeight: 'var(--weight-semibold)', fontSize: 'var(--text-sm)', color: 'var(--color-text-primary)', marginBottom: 2 }}>{f.label}</div>
+              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>{f.sublabel}</div>
+            </div>
+          </AnimateIn>
+        ))}
       </div>
     </div>
   );
 }
 
 function AdoptionContent() {
-  const levels = [
-    { level: '1', name: 'Token Adoption', desc: 'Use the colour, spacing, and typography tokens. No custom values.' },
-    { level: '2', name: 'Component Adoption', desc: 'Use the component library for all standard UI patterns.' },
-    { level: '3', name: 'Full Integration', desc: 'Use patterns, layouts, and content guidelines. Design files use the Figma UI Kit.' },
-    { level: '4', name: 'Contributing', desc: 'Actively contribute new components, patterns, and token updates back to the system.' },
-  ];
   return (
     <div className="prose">
       <h2>Adoption Levels</h2>
       <p>Teams adopt design systems progressively. These levels help set expectations at each stage.</p>
-      {levels.map((l) => (
-        <div key={l.level} style={{ display: 'flex', gap: 'var(--space-4)', marginBottom: 'var(--space-4)', alignItems: 'flex-start' }}>
-          <div style={{
-            width: 32, height: 32, borderRadius: 'var(--radius-full)',
-            background: 'var(--color-primary)', color: 'white',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontWeight: 'var(--weight-bold)', fontSize: 'var(--text-sm)', flexShrink: 0,
-          }}>{l.level}</div>
-          <div>
-            <h4 style={{ marginBottom: 'var(--space-1)' }}>{l.name}</h4>
-            <p style={{ margin: 0 }}>{l.desc}</p>
-          </div>
-        </div>
-      ))}
+      <AdoptionLevelTrack />
     </div>
   );
 }
@@ -162,11 +185,11 @@ function AdoptionContent() {
 /* ---- Page metadata ---- */
 
 const PAGE_META = {
-  overview:  { title: 'Overview',        description: 'Get familiar with the design system — what it is, what it contains, and how to get up and running.' },
-  design:    { title: 'Design',          description: 'How to design with this design system using Figma and our design token library.' },
-  code:      { title: 'Code',            description: 'Developer setup, tooling, and integration guide for the component library.' },
-  tokens:    { title: 'Design Tokens',   description: 'How design tokens work, how they are structured, and how to use them in code.' },
-  adoption:  { title: 'Adoption Levels', description: 'Understand the different levels of design system adoption and what is expected at each stage.' },
+  overview: { title: 'Overview',        description: 'Get familiar with the design system — what it is, what it contains, and how to get up and running.' },
+  design:   { title: 'Design',          description: 'How to design with this design system using Figma and our design token library.' },
+  code:     { title: 'Code',            description: 'Developer setup, tooling, and integration guide for the component library.' },
+  tokens:   { title: 'Design Tokens',   description: 'How design tokens work, how they are structured, and how to use them in code.' },
+  adoption: { title: 'Adoption Levels', description: 'Understand the different levels of design system adoption and what is expected at each stage.' },
 };
 
 function getDesignContent(pageId, brand) {
@@ -186,7 +209,7 @@ function getCodeContent(pageId, brand) {
     <div className="prose">
       <h2>Code Examples</h2>
       <p>Code examples and implementation details.</p>
-      <pre><code>import {'{ }'} from &apos;@ie-design/{brand}-ui&apos;;</code></pre>
+      <CodeBlock language="javascript" filename="example.js" code={`import { } from '@ie-design/${brand}-ui';`} />
     </div>
   );
 }
