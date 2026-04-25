@@ -9,22 +9,23 @@ export default function Footer() {
       <div className={styles.inner}>
         <div className={styles.grid}>
           <div className={styles.brand}>
-            <Link to="/" className={styles.brandLogo} aria-label="IE Design System">
-              <span className={styles.brandMark} aria-hidden="true">IE</span>
-              <span className={styles.brandTitle}>IE Design</span>
+            <Link to="/" className={styles.brandLogo} aria-label="i.e., Design System">
+              <span className={styles.brandTitle}>i.e.,</span>
+              <span className={styles.brandSubtitle}>Design System</span>
             </Link>
             <p className={styles.brandDesc}>
-              Multi-brand design guidelines, component documentation, and
-              development resources for the IE Design System family.
+              Brand guidelines, component documentation, and
+              development resources for the i.e., Design System.
             </p>
           </div>
 
           <div className={styles.col}>
-            <p className={styles.colTitle}>Brands</p>
+            <p className={styles.colTitle}>Design System</p>
             <ul className={styles.colLinks}>
-              <li><Link to="/ie/getting-started/overview/" className={styles.colLink}>IE</Link></li>
-              <li><Link to="/lexus/getting-started/overview/" className={styles.colLink}>Lexus</Link></li>
-              <li><Link to="/toyota/getting-started/overview/" className={styles.colLink}>Toyota</Link></li>
+              <li><Link to="/ie/getting-started/overview/" className={styles.colLink}>Getting Started</Link></li>
+              <li><Link to="/ie/foundations/colour/" className={styles.colLink}>Foundations</Link></li>
+              <li><Link to="/ie/components/button/" className={styles.colLink}>Components</Link></li>
+              <li><Link to="/ie/accessibility/accessible-by-design/" className={styles.colLink}>Accessibility</Link></li>
             </ul>
           </div>
 
@@ -42,17 +43,17 @@ export default function Footer() {
           <div className={styles.col}>
             <p className={styles.colTitle}>Governance</p>
             <ul className={styles.colLinks}>
-              <li><Link to="/governance" className={styles.colLink}>Contribution</Link></li>
-              <li><Link to="/governance" className={styles.colLink}>Design Review</Link></li>
-              <li><Link to="/governance" className={styles.colLink}>Release Notes</Link></li>
-              <li><Link to="/governance" className={styles.colLink}>Support</Link></li>
+              <li><Link to="/ie/governance/contribution/" className={styles.colLink}>Contribution</Link></li>
+              <li><Link to="/ie/governance/design-review/" className={styles.colLink}>Design Review</Link></li>
+              <li><Link to="/ie/governance/versioning/" className={styles.colLink}>Release Notes</Link></li>
+              <li><Link to="/ie/governance/support/" className={styles.colLink}>Support</Link></li>
             </ul>
           </div>
         </div>
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © {year} IE Design System. All rights reserved.
+            © {year} i.e., Design System. All rights reserved.
           </p>
           <span className={styles.version}>
             <span className={styles.versionDot} aria-hidden="true" />

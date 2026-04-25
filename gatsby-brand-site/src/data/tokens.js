@@ -2,7 +2,7 @@ export const BRAND_TOKENS = {
   ie: {
     color: {
       palette: [
-        { name: 'IE Blue', token: 'color-primary', value: '#003087', group: 'Brand', usage: 'Primary actions, links, key UI elements' },
+        { name: 'i.e., Blue', token: 'color-primary', value: '#003087', group: 'Brand', usage: 'Primary actions, links, key UI elements' },
         { name: 'Sky Blue', token: 'color-secondary', value: '#0070CC', group: 'Brand', usage: 'Secondary actions, hover states' },
         { name: 'Cyan Accent', token: 'color-accent', value: '#00B4D8', group: 'Brand', usage: 'Highlights, accents, illustrations' },
         { name: 'Navy Dark', token: 'color-text-primary', value: '#1A1A2E', group: 'Text', usage: 'Primary body text, headings' },
@@ -64,53 +64,6 @@ export const BRAND_TOKENS = {
       { name: 'xl', token: 'bp-xl', value: '1280px', description: 'Wide desktop — expanded content area' },
       { name: '2xl', token: 'bp-2xl', value: '1536px', description: 'Ultra-wide — max content width reached' },
     ],
-  },
-};
-
-// Inherit IE tokens for Lexus/Toyota with overrides
-BRAND_TOKENS.lexus = {
-  ...BRAND_TOKENS.ie,
-  color: {
-    palette: [
-      { name: 'Midnight Black', token: 'color-primary', value: '#0A0A0A', group: 'Brand', usage: 'Primary actions, key UI elements, text' },
-      { name: 'Heritage Gold', token: 'color-secondary', value: '#BF8B45', group: 'Brand', usage: 'Accents, highlights, premium details' },
-      { name: 'Warm Gold', token: 'color-accent', value: '#D4A853', group: 'Brand', usage: 'Decorative accents, secondary highlights' },
-      { name: 'Platinum', token: 'color-bg-muted', value: '#E8E8E8', group: 'Background', usage: 'Surfaces, section backgrounds' },
-      { name: 'Warm Paper', token: 'color-bg-subtle', value: '#F5F4F0', group: 'Background', usage: 'Page backgrounds, card surfaces' },
-      { name: 'White', token: 'color-bg', value: '#FFFFFF', group: 'Background', usage: 'Primary page background' },
-      { name: 'Charcoal Text', token: 'color-text-primary', value: '#0A0A0A', group: 'Text', usage: 'Primary headings, body text' },
-      { name: 'Medium Grey', token: 'color-text-secondary', value: '#5C5C5C', group: 'Text', usage: 'Secondary text, captions' },
-      { name: 'Light Grey', token: 'color-text-muted', value: '#8A8A8A', group: 'Text', usage: 'Placeholder, muted labels' },
-      { name: 'Antique Sand', token: 'color-border', value: '#D4C5A9', group: 'Border', usage: 'Default borders, dividers' },
-      { name: 'Warm Taupe', token: 'color-border-subtle', value: '#EDE7D6', group: 'Border', usage: 'Subtle borders, card edges' },
-      { name: 'Success Green', token: 'color-success', value: '#2D6A4F', group: 'Semantic', usage: 'Success states' },
-      { name: 'Warning Gold', token: 'color-warning', value: '#8B6914', group: 'Semantic', usage: 'Warning states' },
-      { name: 'Danger Crimson', token: 'color-danger', value: '#8B1A1A', group: 'Semantic', usage: 'Error states' },
-    ],
-    semantic: BRAND_TOKENS.ie.color.semantic,
-  },
-};
-
-BRAND_TOKENS.toyota = {
-  ...BRAND_TOKENS.ie,
-  color: {
-    palette: [
-      { name: 'Toyota Red', token: 'color-primary', value: '#EB0A1E', group: 'Brand', usage: 'Primary actions, CTAs, brand emphasis' },
-      { name: 'Charcoal', token: 'color-secondary', value: '#2C2C2C', group: 'Brand', usage: 'Secondary actions, dark backgrounds' },
-      { name: 'Bright Red', token: 'color-accent', value: '#FF4D4D', group: 'Brand', usage: 'Hover states, interactive highlights' },
-      { name: 'White', token: 'color-bg', value: '#FFFFFF', group: 'Background', usage: 'Primary page background' },
-      { name: 'Light Grey', token: 'color-bg-subtle', value: '#F5F5F5', group: 'Background', usage: 'Section backgrounds, subtle surfaces' },
-      { name: 'Pale Grey', token: 'color-bg-muted', value: '#EBEBEB', group: 'Background', usage: 'Chip backgrounds, code blocks' },
-      { name: 'Dark Charcoal', token: 'color-text-primary', value: '#1A1A1A', group: 'Text', usage: 'Primary body text, headings' },
-      { name: 'Mid Grey', token: 'color-text-secondary', value: '#555555', group: 'Text', usage: 'Secondary text' },
-      { name: 'Grey', token: 'color-text-muted', value: '#888888', group: 'Text', usage: 'Placeholder, muted text' },
-      { name: 'Silver', token: 'color-border', value: '#DDDDDD', group: 'Border', usage: 'Default borders' },
-      { name: 'Light Silver', token: 'color-border-subtle', value: '#EEEEEE', group: 'Border', usage: 'Subtle borders, separators' },
-      { name: 'Success Green', token: 'color-success', value: '#1E7E34', group: 'Semantic', usage: 'Success states' },
-      { name: 'Warning Orange', token: 'color-warning', value: '#CC7A00', group: 'Semantic', usage: 'Warning states' },
-      { name: 'Error Red', token: 'color-danger', value: '#CC0000', group: 'Semantic', usage: 'Error states' },
-    ],
-    semantic: BRAND_TOKENS.ie.color.semantic,
   },
 };
 

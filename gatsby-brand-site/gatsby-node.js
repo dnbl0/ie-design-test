@@ -1,6 +1,6 @@
 const path = require('path');
 
-const BRANDS = ['ie', 'lexus', 'toyota'];
+const BRANDS = ['ie'];
 
 const GETTING_STARTED_PAGES = [
   { id: 'overview', label: 'Overview' },

@@ -9,33 +9,33 @@ const RESOURCES = [
   {
     category: 'Design Tools',
     items: [
-      { icon: '🎨', name: 'Figma UI Kit — IE', desc: 'IE brand components, tokens, and design specs', link: '#' },
-      { icon: '🎨', name: 'Figma UI Kit — Lexus', desc: 'Lexus brand components, tokens, and design specs', link: '#' },
-      { icon: '🎨', name: 'Figma UI Kit — Toyota', desc: 'Toyota brand components, tokens, and design specs', link: '#' },
+      { icon: '🎨', name: 'Figma UI Kit', desc: 'i.e., brand components, tokens, and design specs', link: '#' },
+      { icon: '🎨', name: 'Figma Token Library', desc: 'Shared design token library with brand theming', link: '#' },
+      { icon: '🎨', name: 'Icon Library', desc: 'Full icon set in Figma with multiple weights', link: '#' },
     ],
   },
   {
     category: 'Development',
     items: [
-      { icon: '📦', name: '@ie-design/ie-ui', desc: 'IE React component library on npm', link: '#' },
-      { icon: '📦', name: '@ie-design/lexus-ui', desc: 'Lexus React component library on npm', link: '#' },
-      { icon: '📦', name: '@ie-design/toyota-ui', desc: 'Toyota React component library on npm', link: '#' },
+      { icon: '📦', name: '@ie-design/ie-ui', desc: 'i.e., React component library on npm', link: '#' },
+      { icon: '📦', name: '@ie-design/tokens', desc: 'W3C format design tokens package', link: '#' },
+      { icon: '📦', name: '@ie-design/icons', desc: 'SVG icon set as React components', link: '#' },
     ],
   },
   {
     category: 'Storybook',
     items: [
-      { icon: '📖', name: 'IE Storybook', desc: 'Live interactive components and documentation', link: '#' },
-      { icon: '📖', name: 'Lexus Storybook', desc: 'Live interactive components and documentation', link: '#' },
-      { icon: '📖', name: 'Toyota Storybook', desc: 'Live interactive components and documentation', link: '#' },
+      { icon: '📖', name: 'i.e., Storybook', desc: 'Live interactive components and documentation', link: '#' },
+      { icon: '📖', name: 'Accessibility Addon', desc: 'Storybook axe-core accessibility checks', link: '#' },
+      { icon: '📖', name: 'Design Token Addon', desc: 'Visual token browser in Storybook', link: '#' },
     ],
   },
   {
     category: 'Design Tokens',
     items: [
-      { icon: '🔷', name: 'IE Tokens (JSON)', desc: 'W3C format design tokens for IE', link: '#' },
-      { icon: '🔷', name: 'Lexus Tokens (JSON)', desc: 'W3C format design tokens for Lexus', link: '#' },
-      { icon: '🔷', name: 'Toyota Tokens (JSON)', desc: 'W3C format design tokens for Toyota', link: '#' },
+      { icon: '🔷', name: 'Tokens (JSON)', desc: 'W3C format design tokens for i.e.,', link: '#' },
+      { icon: '🔷', name: 'Tokens (CSS)', desc: 'CSS custom property token stylesheet', link: '#' },
+      { icon: '🔷', name: 'Tokens (SCSS)', desc: 'SCSS variable token file', link: '#' },
     ],
   },
 ];
@@ -44,8 +44,8 @@ export default function ResourcesPage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Helmet>
-        <title>Resources | IE Design System</title>
-        <meta name="description" content="Design tools, component libraries, tokens, and documentation resources for the IE Design System." />
+        <title>Resources | i.e., Design System</title>
+        <meta name="description" content="Design tools, component libraries, tokens, and documentation resources for the i.e., Design System." />
         <html lang="en" />
       </Helmet>
 
@@ -59,7 +59,7 @@ export default function ResourcesPage() {
             Resources
           </h1>
           <p style={{ fontSize: 'var(--text-lg)', color: 'var(--color-text-muted)', maxWidth: 600, marginBottom: 'var(--space-10)', lineHeight: 'var(--leading-relaxed)' }}>
-            Everything you need to design and build with the IE Design System family.
+            Everything you need to design and build with the i.e., Design System.
           </p>
 
           {RESOURCES.map((cat) => (
@@ -96,19 +96,17 @@ export default function ResourcesPage() {
               Brand Guidelines
             </h2>
             <p style={{ color: 'var(--color-text-secondary)', marginBottom: 'var(--space-5)', lineHeight: 'var(--leading-relaxed)' }}>
-              In-depth brand guidelines for each design system, including colour usage, typography rules, and tone of voice.
+              In-depth guidelines including colour usage, typography rules, and tone of voice.
             </p>
             <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
-              {['ie', 'lexus', 'toyota'].map((brand) => (
-                <Link key={brand} to={`/${brand}/foundations/colour/`} style={{
-                  padding: 'var(--space-2) var(--space-5)',
-                  background: 'var(--color-primary)', color: 'white',
-                  borderRadius: 'var(--radius-md)', textDecoration: 'none',
-                  fontWeight: 600, fontSize: 'var(--text-sm)', textTransform: 'capitalize',
-                }}>
-                  {brand} Guidelines
-                </Link>
-              ))}
+              <Link to="/ie/foundations/colour/" style={{
+                padding: 'var(--space-2) var(--space-5)',
+                background: 'var(--color-primary)', color: 'white',
+                borderRadius: 'var(--radius-md)', textDecoration: 'none',
+                fontWeight: 600, fontSize: 'var(--text-sm)',
+              }}>
+                View Guidelines
+              </Link>
             </div>
           </div>
         </div>

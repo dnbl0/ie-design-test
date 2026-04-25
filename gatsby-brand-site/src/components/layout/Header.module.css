@@ -26,49 +26,11 @@
   gap: var(--space-3);
   text-decoration: none;
   flex-shrink: 0;
-}
-
-.logoMark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: var(--color-primary);
-  color: var(--color-text-on-primary);
-  border-radius: var(--radius-base);
-  font-family: var(--font-display);
-  font-weight: var(--weight-bold);
-  font-size: var(--text-sm);
-  letter-spacing: -0.02em;
-  transition: background-color var(--duration-base) var(--ease-in-out);
-  flex-shrink: 0;
-}
-
-[data-brand="lexus"] .logoMark {
-  background: var(--color-primary);
-  border-radius: var(--radius-full);
-  font-family: var(--font-display);
-  letter-spacing: 0.05em;
-}
-
-[data-brand="toyota"] .logoMark {
-  background: var(--color-primary);
-  border-radius: var(--radius-base);
-}
-
-.logoText {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.logoTitle {
-  font-family: var(--font-display);
-  font-weight: var(--weight-bold);
-  font-size: var(--text-base);
   color: var(--color-text-primary);
-  letter-spacing: -0.01em;
+}
+
+.logo:hover {
+  color: var(--color-primary);
 }
 
 .logoSub {

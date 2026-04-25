@@ -158,100 +158,6 @@ input, button, textarea, select { font: inherit; }
 }
 
 /* ============================================================
-   BRAND OVERRIDES – Lexus
-   ============================================================ */
-[data-brand="lexus"] {
-  --color-primary:          #0A0A0A;
-  --color-primary-hover:    #262626;
-  --color-primary-active:   #404040;
-  --color-primary-subtle:   #F5F4F0;
-  --color-secondary:        #BF8B45;
-  --color-secondary-hover:  #A67838;
-  --color-accent:           #D4A853;
-  --color-accent-subtle:    #FBF5E9;
-  --color-success:          #2D6A4F;
-  --color-success-subtle:   #D8F3DC;
-  --color-warning:          #8B6914;
-  --color-warning-subtle:   #FFF3CD;
-  --color-danger:           #8B1A1A;
-  --color-danger-subtle:    #FFE4E4;
-  --color-info:             #0A0A0A;
-  --color-info-subtle:      #F5F4F0;
-
-  --color-bg:               #FFFFFF;
-  --color-bg-subtle:        #F5F4F0;
-  --color-bg-muted:         #ECE9E0;
-  --color-surface:          #FFFFFF;
-  --color-surface-raised:   #FEFEFE;
-
-  --color-text-primary:     #0A0A0A;
-  --color-text-secondary:   #5C5C5C;
-  --color-text-muted:       #8A8A8A;
-  --color-text-disabled:    #BDBDBD;
-  --color-text-inverse:     #FFFFFF;
-  --color-text-link:        #0A0A0A;
-  --color-text-link-hover:  #BF8B45;
-  --color-text-on-primary:  #FFFFFF;
-
-  --color-border:           #D4C5A9;
-  --color-border-strong:    #BF8B45;
-  --color-border-subtle:    #EDE7D6;
-  --color-border-focus:     #BF8B45;
-
-  --font-display:           'Georgia', 'Times New Roman', serif;
-  --font-body:              'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-  --focus-ring: 0 0 0 3px var(--color-accent-subtle), 0 0 0 1px var(--color-border-focus);
-}
-
-/* ============================================================
-   BRAND OVERRIDES – Toyota
-   ============================================================ */
-[data-brand="toyota"] {
-  --color-primary:          #EB0A1E;
-  --color-primary-hover:    #CC0818;
-  --color-primary-active:   #A80613;
-  --color-primary-subtle:   #FFF0F1;
-  --color-secondary:        #2C2C2C;
-  --color-secondary-hover:  #1A1A1A;
-  --color-accent:           #FF4D4D;
-  --color-accent-subtle:    #FFF0F0;
-  --color-success:          #1E7E34;
-  --color-success-subtle:   #E8F5E9;
-  --color-warning:          #CC7A00;
-  --color-warning-subtle:   #FFF8E1;
-  --color-danger:           #CC0000;
-  --color-danger-subtle:    #FFEBEE;
-  --color-info:             #0066CC;
-  --color-info-subtle:      #E3F2FD;
-
-  --color-bg:               #FFFFFF;
-  --color-bg-subtle:        #F5F5F5;
-  --color-bg-muted:         #EBEBEB;
-  --color-surface:          #FFFFFF;
-  --color-surface-raised:   #FFFFFF;
-
-  --color-text-primary:     #1A1A1A;
-  --color-text-secondary:   #555555;
-  --color-text-muted:       #888888;
-  --color-text-disabled:    #BBBBBB;
-  --color-text-inverse:     #FFFFFF;
-  --color-text-link:        #EB0A1E;
-  --color-text-link-hover:  #CC0818;
-  --color-text-on-primary:  #FFFFFF;
-
-  --color-border:           #DDDDDD;
-  --color-border-strong:    #AAAAAA;
-  --color-border-subtle:    #EEEEEE;
-  --color-border-focus:     #EB0A1E;
-
-  --font-display:           'Arial Black', 'Arial Bold', Impact, sans-serif;
-  --font-body:              'Arial', Helvetica, sans-serif;
-
-  --focus-ring: 0 0 0 3px var(--color-primary-subtle), 0 0 0 1px var(--color-border-focus);
-}
-
-/* ============================================================
    BASE ELEMENT STYLES
    ============================================================ */
 html {
@@ -420,16 +326,6 @@ html, [data-brand] {
   font-weight: var(--weight-medium);
   letter-spacing: 0.025em;
   text-transform: uppercase;
-}
-
-[data-brand="lexus"] .tag {
-  background: var(--color-accent-subtle);
-  color: var(--color-secondary);
-}
-
-[data-brand="toyota"] .tag {
-  background: var(--color-primary-subtle);
-  color: var(--color-primary);
 }
 
 /* Scrollbar styling */
